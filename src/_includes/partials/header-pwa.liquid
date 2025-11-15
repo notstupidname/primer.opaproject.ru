@@ -1,0 +1,17 @@
+<input
+  type="checkbox"
+  name="menu-toggle"
+  id="menu-toggle">
+<header id="site-header">
+  <label for="menu-toggle" class="menu-label">
+    {% include 'svg-icons/ham.svg' %}
+    {% include 'svg-icons/cross.svg' %}
+  </label>
+  <div class="logo-container">
+    <a href="https://opaproject.ru/" class="logo"><span>*</span><span>опа</span><span>/</span></a>
+    <a href="/" class="project-name">{{project-name}}</a>
+  </div>
+  <button class="print-button">
+    {% include 'svg-icons/print.svg' %}
+  </button>
+</header>

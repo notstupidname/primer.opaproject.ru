@@ -1,0 +1,33 @@
+<nav>
+  <div>
+    <header>
+      <a class="nav-tab current" href="#concept-nav">Концепт</a>
+      <a class="nav-tab{% unless makeProject == true %} disabled {% endunless %}" href="#project-nav">Проект</a>
+    </header>
+    <section class="scroller">
+      <ul id="concept-nav">
+        {% for room in concept %}
+        <li><a href="#concept-{{forloop.index}}">{{room.name}}</a></li>
+        {% endfor %}
+      </ul>
+      {% if makeProject == true %}
+      <ul id="project-nav">
+        {% for subcat in project %}
+        {% if subcat[1].items.length > 0 %}
+        <li><a href="#project-{{subcat[0]}}">{{ subcat[1].title }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% assign projectFile = '/files/project.pdf' | fileExist %}
+        {% if projectFile %}
+        <li>
+          <a class="download" href="/files/project.pdf" target="_blank">
+            <span>Чертежи</span>
+            {% include "svg-icons/file_download.svg" %}
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </section>
+  </div>
+  {% endif %}
+</nav>
