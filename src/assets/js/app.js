@@ -29,13 +29,31 @@
         }, false);
     }
 
+    projectName.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+        document.startViewTransition(() => body.scrollIntoView(true, { behavior: "instant" }));
+
+    }, false);
+
 
     // Close menu on navigational click
-    const navAnchors = document.querySelectorAll('nav ul a');
+    const navAnchors = document.querySelectorAll("nav ul a[href^='#']");
     const menuToggle = document.querySelector('#menu-toggle');
     for (const anchor of navAnchors) {
         anchor.addEventListener('click', (e) => {
             menuToggle.checked = false;
+            e.preventDefault();
+            e.stopPropagation();
+            const target = document.querySelector(e.target.getAttribute("href"));
+
+
+            document.startViewTransition(() => {
+                history.pushState(null, "", e.target.getAttribute("href"));
+                target.scrollIntoView(true, { behavior: "instant" })
+            });
+
         });
     }
 

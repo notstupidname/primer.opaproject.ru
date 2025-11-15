@@ -107,6 +107,7 @@ body.pwa {
 
   & #site-header {
     justify-content: space-between;
+    /* view-transition-name: site-header; */
 
     & button.print-button {
       padding: var(--space-s);
@@ -294,7 +295,7 @@ body.pwa {
     }
   }
 
-  & .project-name {
+  & #projectName {
     color: var(--color-text-10);
     font-family: 'Roboto-Slab', 'Roboto-Slab-fallback', serif;
     font-size: var(--step-2);
@@ -302,9 +303,10 @@ body.pwa {
     letter-spacing: normal;
     text-transform: lowercase;
     transition: transform var(--duration) var(--easing);
+    text-decoration: none;
 
     &:hover {
-      transform: scale(.85);
+      transform: scale(.9);
     }
   }
 
@@ -383,3 +385,46 @@ body.pwa {
     margin: 1cm;
   }
 }
+
+
+:root {
+  scroll-behavior: auto;
+}
+
+@keyframes move-out {
+  from {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(30%);
+    opacity: 0;
+  }
+}
+
+@keyframes move-in {
+  from {
+    transform: translateX(-30%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+::view-transition-group(root) {
+  animation-duration: .5s;
+}
+
+/* Apply the custom animation to the old and new page states */
+
+/* ::view-transition-old(root) {
+  animation: var(--duration) ease-in both move-out;
+}
+
+::view-transition-new(root) {
+  animation: var(--duration) ease-in both move-in;
+} */
