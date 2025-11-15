@@ -60,6 +60,7 @@ export default function (eleventyConfig) {
     // Add any other Image utility options here:
     formats: ["webp", "jpeg"],
     widths: config.imageSizes,
+    failOnError: false,
 
     sharpJpegOptions: {
       mozjpeg: true

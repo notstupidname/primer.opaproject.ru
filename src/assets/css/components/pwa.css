@@ -266,7 +266,7 @@ body.pwa {
     }
 
     &>p {
-      flex: 0 0 7ch;
+      flex: 0 1 7ch;
       text-align: end;
     }
 
